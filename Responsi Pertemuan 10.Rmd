@@ -1,0 +1,67 @@
+---
+title: "Responsi PErtemuan 10"
+author: "Alwan Rahmana"
+date: "5/9/2022"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#Collecting Data
+a11<-sum(270,266,339)
+a12<-sum(326,502)
+a13<-sum(194,164)
+a21<-sum(3776,5070,2902)
+a22<-sum(7335,2726,224)
+a23<-sum(2088,1253,19)
+
+
+table1<-matrix(c(a11,a12,a13,a21,a22,a23),nrow=2,byrow=T)
+colnames(table1)<-c("40% Terbawah","40% Menengah","20% Teratas")
+rownames(table1)<-c("Petani Miskin","Petani Non-miskin")
+table1<-as.table(table1)
+table1
+prop.table(table1)
+
+```
+
+```{r}
+b11<-sum(3776,5070,2902,270,266,339)
+b12<-sum(7335,2726,224,326,502,0)
+b13<-sum(2088,1253,19,194,164)
+
+table2<-matrix(c(b11,b12,b13),nrow=1,byrow=T)
+colnames(table2)<-c("40% Terbawah","40% Menengah","20% Teratas")
+rownames(table2)<-c("Petani ")
+table2
+Kuantil2<-margin.table(table2,2)
+
+Petani2<-margin.table(table2,1)
+
+prop.test(Kuantil2,n=c(sum(Kuantil2),sum(Kuantil2),sum(Kuantil2)))
+```
+
+```{r}
+c11<-sum(270,3776)
+c12<-sum(326,7335)
+c13<-sum(194,2088)
+c21<-sum(100,85)
+c22<-sum(434,73)
+c23<-sum(79,51)
+table3<-matrix(c(c11,c12,c13,c21,c22,c23),nrow=2,byrow=T)
+colnames(table3)<-c("40% Terbawah","40% Menengah","20% Teratas")
+rownames(table3)<-c("Petani ","Non-petani")
+table3
+
+Kuantil3<-margin.table(table3,2)
+Kuantil3
+Petani3<-margin.table(table3,1)
+Petani3
+
+prop.test(Petani3,n=c(sum(Petani3),sum(Petani3)))
+margin.table(table3,1)
+```
+
